@@ -7,8 +7,9 @@
   --color-bone: #F4F3F0;
   --color-slate-soft: #1A1C1E;
 
-  --font-display: var(--font-playfair), "Playfair Display", serif;
+  --font-display: var(--font-inter), "Inter", sans-serif;
   --font-body: var(--font-inter), "Inter", sans-serif;
+  --font-sans: var(--font-inter), "Inter", sans-serif;
 
   --background-image-gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F5E09F 50%, #B8860B 100%);
 }
