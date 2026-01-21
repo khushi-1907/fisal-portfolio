@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0F172A;
+  --color-accent: #D4AF37;
+  --color-cream: #FAF9F6;
+  --color-bone: #F4F3F0;
+  --color-slate-soft: #1A1C1E;
+
+  --font-display: var(--font-playfair), "Playfair Display", serif;
+  --font-body: var(--font-inter), "Inter", sans-serif;
+
+  --background-image-gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F5E09F 50%, #B8860B 100%);
+}
+
+@layer base {
+  :root {
+    --background: #FAF9F6;
+    /* Premium Alabaster/Off-White */
+    --foreground: #1A1C1E;
+    /* Soft Deep Slate */
+    --bg-secondary: #F4F3F0;
+    /* Bone */
+    --bg-tertiary: #EBEAE6;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    scroll-behavior: smooth;
+    @apply transition-colors duration-500;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display);
+    @apply tracking-tight;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    @apply transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-24 lg:py-40;
+  }
+
+  .gold-gradient {
+    background: var(--background-image-gold-gradient);
+  }
+
+  .text-gold-gradient {
+    background: var(--background-image-gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-nav {
+    @apply bg-cream/90 backdrop-blur-xl border-b border-slate-200/50 shadow-sm;
+  }
+
+  .glass-card {
+    @apply bg-white backdrop-blur-md border border-slate-200/50 shadow-sm transition-all duration-300;
+  }
+
+  .input-field {
+    @apply w-full px-5 py-4 rounded-xl bg-bone border border-slate-200/50 text-slate-soft placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply px-8 py-4 bg-primary text-white rounded-xl font-bold hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 active:scale-95;
+  }
+
+  .btn-outline {
+    @apply px-8 py-4 border-2 border-slate-200 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition-all duration-300 flex items-center justify-center active:scale-95;
+  }
+}
+
+@layer utilities {
+  .clip-path-hero {
+    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+
+  .animate-spin-slow-reverse {
+    animation: spin-reverse 12s linear infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes spin-reverse {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    }
+
+    to {
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.6), 0 0 40px rgba(212, 175, 55, 0.3);
+    }
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #D4AF37 0%, #F5E09F 50%, #B8860B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .scroll-indicator {
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+
+    40% {
+      transform: translateY(-10px);
+    }
+
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+}
