@@ -71,6 +71,57 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateActiveLink);
     window.addEventListener('resize', updateActiveLink);
 
+    // Theme toggle with smooth transition
+    const toggleBtn = document.getElementById('theme-toggle');
+
+    function setTheme(theme) {
+        // Add transitioning class for smooth animation
+        document.documentElement.classList.add('theme-transitioning');
+
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // Remove transitioning class after animation completes
+        setTimeout(() => {
+            document.documentElement.classList.remove('theme-transitioning');
+        }, 400);
+
+        localStorage.setItem('theme', theme);
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+    });
+
+    // Load saved theme or detect system preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme) {
+        // Use saved preference
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+    } else if (prefersDark) {
+        // Use system preference if no saved theme
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+    }
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        // Only auto-switch if user hasn't manually set a preference
+        if (!localStorage.getItem('theme')) {
+            setTheme(e.matches ? 'dark' : 'light');
+        }
+    });
+
+
     // Initial check
     setTimeout(updateActiveLink, 100);
 });

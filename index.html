@@ -16,58 +16,101 @@
     <script src="./js/main.js" defer></script>
 </head>
 
-<body
-    class="flex flex-col lg:flex-row bg-[#fafafa] text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white">
-    <aside
-        class="lg:w-[40%] lg:h-screen lg:fixed lg:left-0 lg:top-0 w-full bg-neutral-100 overflow-hidden relative group">
-        <div
-            class="absolute inset-0 bg-neutral-900/5 lg:group-hover:bg-transparent transition-colors duration-1000 z-10">
+<link
+    href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+<link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body class="flex flex-col lg:flex-row bg-[#fafafa] text-neutral-900
+           dark:bg-neutral-950 dark:text-neutral-100
+           antialiased selection:bg-neutral-900 selection:text-white">
+
+    <!-- Sidebar -->
+    <aside class="lg:w-[40%] lg:h-screen lg:fixed lg:left-0 lg:top-0 w-full
+               bg-neutral-100 dark:bg-neutral-900
+               overflow-hidden relative group">
+        <div class="absolute inset-0 bg-neutral-900/5 dark:bg-black/40
+                   lg:group-hover:bg-transparent transition-colors duration-1000 z-10">
         </div>
-        <img alt="Fisal Alhakbani Portrait"
-            class="w-full h-full object-cover grayscale contrast-110 lg:group-hover:scale-105 transition-transform duration-[2000ms] ease-out"
-            src="./assets/photo.jpg" loading="lazy" />
+        <img alt="Fisal Alhakbani Portrait" class="w-full h-full object-cover grayscale contrast-110
+                   lg:group-hover:scale-105 transition-transform duration-[2000ms] ease-out" src="./assets/photo.jpg"
+            loading="lazy" />
     </aside>
+
     <main class="lg:w-[60%] lg:ml-[40%] w-full min-h-screen relative">
         <div class="max-w-4xl mx-auto px-8 lg:px-24">
-            <header
-                class="flex justify-between items-center py-12 sticky top-0 bg-[#fafafa]/80 backdrop-blur-md z-50 transition-all duration-500 border-b border-transparent">
-                <span
-                    class="text-[11px] uppercase tracking-[0.4em] font-bold text-neutral-900/40 hover:text-neutral-900 transition-colors duration-500 cursor-default"
-                    aria-label="Fisal Alhakbani Initials">FA</span>
-                <nav class="flex gap-8 md:gap-12 relative" role="navigation">
-                    <div id="nav-indicator"
-                        class="absolute bottom-[-10px] left-0 h-[2px] bg-neutral-900 transition-all duration-300 ease-out opacity-0 pointer-events-none">
-                    </div>
-                    <a class="nav-link text-[11px] uppercase tracking-[0.2em] font-medium text-neutral-400 hover:text-neutral-900 transition-colors duration-300"
-                        href="#summary" aria-label="Go to Summary">Summary</a>
-                    <a class="nav-link text-[11px] uppercase tracking-[0.2em] font-medium text-neutral-400 hover:text-neutral-900 transition-colors duration-300"
-                        href="#experience" aria-label="Go to Experience">Experience</a>
-                    <a class="nav-link text-[11px] uppercase tracking-[0.2em] font-medium text-neutral-400 hover:text-neutral-900 transition-colors duration-300"
-                        href="#education" aria-label="Go to Education">Education</a>
-                    <a class="nav-link text-[11px] uppercase tracking-[0.2em] font-medium text-neutral-400 hover:text-neutral-900 transition-colors duration-300"
-                        href="#contact" aria-label="Go to Contact">Contact</a>
+
+            <!-- Header -->
+            <header class="flex justify-between items-center py-12 sticky top-0
+                       bg-[#fafafa]/80 dark:bg-neutral-950/80
+                       backdrop-blur-md z-50 transition-all duration-500
+                       border-b border-transparent">
+
+                <span class="text-[11px] uppercase tracking-[0.4em] font-bold
+                           text-neutral-900/40 dark:text-neutral-400">
+                    FA
+                </span>
+
+                <nav class="flex gap-8 md:gap-12 relative">
+                    <a class="nav-link" href="#summary">Summary</a>
+                    <a class="nav-link" href="#experience">Experience</a>
+                    <a class="nav-link" href="#education">Education</a>
+                    <a class="nav-link" href="#contact">Contact</a>
                 </nav>
+
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="ml-6 p-2 rounded-full border relative
+                           border-neutral-200 dark:border-neutral-700
+                           text-neutral-600 dark:text-neutral-300
+                           hover:text-neutral-900 dark:hover:text-white
+                           hover:bg-neutral-50 dark:hover:bg-neutral-900
+                           transition-all duration-300" aria-label="Toggle dark mode">
+
+                    <!-- Sun Icon (visible in light mode) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sun-icon" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364-.707.707
+                               M6.343 17.657l-.707.707m0-12.728.707.707
+                               m11.314 11.314.707.707
+                               M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                    </svg>
+
+                    <!-- Moon Icon (visible in dark mode) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 moon-icon" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                </button>
             </header>
+
 
             <section class="min-h-[85vh] flex flex-col justify-center reveal">
                 <h1
-                    class="font-sans text-6xl md:text-9xl font-black tracking-tighter leading-[0.8] mb-16 text-neutral-900 mt-20">
-                    Fisal<br /><span class="text-neutral-400">Alhakbani</span>
+                    class="font-sans text-6xl md:text-[10rem] font-black tracking-tighter leading-[0.8] mb-12 text-neutral-900 dark:text-neutral-50 mt-20">
+                    Fisal<br /><span class="text-neutral-400 dark:text-neutral-500">Alhakbani</span>
                 </h1>
                 <p
-                    class="font-serif text-2xl md:text-4xl font-light text-neutral-500 max-w-2xl leading-tight stagger-1 italic">
+                    class="font-serif text-2xl md:text-3xl font-light text-neutral-500 dark:text-neutral-400 max-w-2xl leading-relaxed stagger-1 italic pl-1">
                     Local Content Monitoring Specialist & Industrial Engineer.
                 </p>
             </section>
 
             <section class="py-32 md:py-48 reveal" id="summary">
-                <span class="block text-xs font-bold uppercase tracking-[0.3em] text-neutral-400 mb-8 pl-1 md:pl-0">01.
+                <span
+                    class="block text-xs font-bold uppercase tracking-[0.3em] text-neutral-400 dark:text-neutral-500 mb-8 pl-1 md:pl-0">01.
                     Summary</span>
                 <div
-                    class="border-l border-neutral-200 pl-8 md:pl-16 transition-colors duration-500 hover:border-neutral-900">
-                    <h2 class="text-5xl md:text-7xl font-bold tracking-tighter text-neutral-900 mb-16">About Me</h2>
-                    <div class="font-serif text-2xl md:text-4xl leading-relaxed text-neutral-600 font-light stagger-1">
-                        Fisal, a knowledgeable <span class="text-neutral-900 font-normal">industrial engineer</span>,
+                    class="border-l border-neutral-200 dark:border-neutral-800 pl-8 md:pl-16 transition-colors duration-500 hover:border-neutral-900 dark:hover:border-neutral-600">
+                    <h2
+                        class="text-5xl md:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-neutral-50 mb-12">
+                        About Me</h2>
+                    <div
+                        class="font-serif text-2xl md:text-3xl leading-relaxed text-neutral-600 dark:text-neutral-300 font-light stagger-1">
+                        Fisal, a knowledgeable <span
+                            class="text-neutral-900 dark:text-neutral-50 font-normal">industrial engineer</span>,
                         excels in solving complex problems. My expertise lies in quantitative analysis, which I apply
                         comprehensively to analytical projects, business reporting, and process improvements. I am not
                         only self-motivated but also an enthusiastic communicator.
@@ -76,27 +119,32 @@
             </section>
 
             <section class="py-32 md:py-48" id="experience">
-                <span class="block text-xs font-bold uppercase tracking-[0.3em] text-neutral-400 mb-8 pl-1 md:pl-0">02.
+                <span
+                    class="block text-xs font-bold uppercase tracking-[0.3em] text-neutral-400 dark:text-neutral-500 mb-8 pl-1 md:pl-0">02.
                     Experience</span>
-                <h2 class="text-5xl md:text-7xl font-bold tracking-tighter text-neutral-900 mb-24 pl-8 md:pl-16 reveal">
+                <h2
+                    class="text-5xl md:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-neutral-50 mb-24 pl-8 md:pl-16 reveal">
                     Career History</h2>
-                <div class="space-y-40 pl-8 md:pl-16 relative border-l border-neutral-200">
+                <div class="space-y-40 pl-8 md:pl-16 relative border-l border-neutral-200 dark:border-neutral-800">
 
                     <article class="experience-item reveal stagger-1 relative group">
                         <div
-                            class="absolute -left-[37px] md:-left-[69px] top-3 w-3 h-3 bg-neutral-100 border border-neutral-300 rounded-full group-hover:bg-neutral-900 group-hover:border-neutral-900 transition-all duration-500">
+                            class="absolute -left-[37px] md:-left-[69px] top-3 w-3 h-3 bg-white border-2 border-neutral-300 rounded-full group-hover:border-neutral-900 group-hover:scale-125 transition-all duration-500 z-10">
                         </div>
                         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-8">
                             <h3
-                                class="text-3xl md:text-4xl font-bold text-neutral-900 group-hover:translate-x-2 transition-transform duration-500">
+                                class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-50 group-hover:translate-x-2 transition-transform duration-500">
                                 Local Content Monitoring Specialist</h3>
-                            <time class="font-serif text-lg italic text-neutral-400 mt-2 md:mt-0">Feb 2024 —
+                            <time
+                                class="font-serif text-lg italic text-neutral-400 dark:text-neutral-500 mt-2 md:mt-0">Feb
+                                2024 —
                                 Present</time>
                         </div>
-                        <div class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-8">
+                        <div
+                            class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 dark:text-neutral-500 mb-8">
                             LCGPA
                         </div>
-                        <ul class="bullet-list space-y-4 text-neutral-600">
+                        <ul class="bullet-list space-y-4 text-neutral-600 dark:text-neutral-300">
                             <li>Account management of various high-spender government entities.</li>
                             <li>Making sure that government entities procuring entities are compliant with LCGPA
                                 standards.</li>
@@ -106,38 +154,44 @@
                     </article>
 
                     <article
-                        class="experience-item reveal stagger-1 relative pt-8 border-t border-dashed border-neutral-200 group">
+                        class="experience-item reveal stagger-1 relative pt-8 border-t border-dashed border-neutral-300 dark:border-neutral-700 group">
                         <div
-                            class="absolute -left-[37px] md:-left-[69px] top-12 w-3 h-3 bg-neutral-100 border border-neutral-300 rounded-full group-hover:bg-neutral-900 group-hover:border-neutral-900 transition-all duration-500">
+                            class="absolute -left-[37px] md:-left-[69px] top-12 w-3 h-3 bg-white border-2 border-neutral-300 rounded-full group-hover:border-neutral-900 group-hover:scale-125 transition-all duration-500 z-10">
                         </div>
                         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-8">
                             <h3
-                                class="text-3xl md:text-4xl font-bold text-neutral-900 group-hover:translate-x-2 transition-transform duration-500">
+                                class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-50 group-hover:translate-x-2 transition-transform duration-500">
                                 Local Content Monitoring Analyst</h3>
-                            <time class="font-serif text-lg italic text-neutral-400 mt-2 md:mt-0">Nov 2022 — Feb
+                            <time
+                                class="font-serif text-lg italic text-neutral-400 dark:text-neutral-500 mt-2 md:mt-0">Nov
+                                2022 — Feb
                                 2024</time>
                         </div>
-                        <div class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-8">
+                        <div
+                            class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 dark:text-neutral-500 mb-8">
                             LCGPA — Operations
                         </div>
                     </article>
 
                     <article
-                        class="experience-item reveal stagger-1 relative pt-8 border-t border-dashed border-neutral-200 group">
+                        class="experience-item reveal stagger-1 relative pt-8 border-t border-dashed border-neutral-300 dark:border-neutral-700 group">
                         <div
-                            class="absolute -left-[37px] md:-left-[69px] top-12 w-3 h-3 bg-neutral-100 border border-neutral-300 rounded-full group-hover:bg-neutral-900 group-hover:border-neutral-900 transition-all duration-500">
+                            class="absolute -left-[37px] md:-left-[69px] top-12 w-3 h-3 bg-white border-2 border-neutral-300 rounded-full group-hover:border-neutral-900 group-hover:scale-125 transition-all duration-500 z-10">
                         </div>
                         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-8">
                             <h3
-                                class="text-3xl md:text-4xl font-bold text-neutral-900 group-hover:translate-x-2 transition-transform duration-500">
+                                class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-50 group-hover:translate-x-2 transition-transform duration-500">
                                 Business Process Trainee</h3>
-                            <time class="font-serif text-lg italic text-neutral-400 mt-2 md:mt-0">Sep 2022 — Nov
+                            <time
+                                class="font-serif text-lg italic text-neutral-400 dark:text-neutral-500 mt-2 md:mt-0">Sep
+                                2022 — Nov
                                 2022</time>
                         </div>
-                        <div class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-8">
+                        <div
+                            class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 dark:text-neutral-500 mb-8">
                             THIQAH Business Services
                         </div>
-                        <ul class="bullet-list space-y-4 text-neutral-600">
+                        <ul class="bullet-list space-y-4 text-neutral-600 dark:text-neutral-300">
                             <li>Understanding available Business Process Management tools, goals, and outcomes.</li>
                             <li>Participating in strategic meetings and workshops with organizational departments.</li>
                             <li>Drafting department procedures including Process Control Sheets, narratives, and RACI
@@ -146,21 +200,24 @@
                     </article>
 
                     <article
-                        class="experience-item reveal stagger-1 relative pt-8 border-t border-dashed border-neutral-200 group">
+                        class="experience-item reveal stagger-1 relative pt-8 border-t border-dashed border-neutral-300 dark:border-neutral-700 group">
                         <div
-                            class="absolute -left-[37px] md:-left-[69px] top-12 w-3 h-3 bg-neutral-100 border border-neutral-300 rounded-full group-hover:bg-neutral-900 group-hover:border-neutral-900 transition-all duration-500">
+                            class="absolute -left-[37px] md:-left-[69px] top-12 w-3 h-3 bg-white border-2 border-neutral-300 rounded-full group-hover:border-neutral-900 group-hover:scale-125 transition-all duration-500 z-10">
                         </div>
                         <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-8">
                             <h3
-                                class="text-3xl md:text-4xl font-bold text-neutral-900 group-hover:translate-x-2 transition-transform duration-500">
+                                class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-50 group-hover:translate-x-2 transition-transform duration-500">
                                 Summer Intern</h3>
-                            <time class="font-serif text-lg italic text-neutral-400 mt-2 md:mt-0">Jun 2021 — Aug
+                            <time
+                                class="font-serif text-lg italic text-neutral-400 dark:text-neutral-500 mt-2 md:mt-0">Jun
+                                2021 — Aug
                                 2021</time>
                         </div>
-                        <div class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-8">
+                        <div
+                            class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 dark:text-neutral-500 mb-8">
                             stc
                         </div>
-                        <ul class="bullet-list space-y-4 text-neutral-600">
+                        <ul class="bullet-list space-y-4 text-neutral-600 dark:text-neutral-300">
                             <li>Supported team members to ensure operational continuity.</li>
                             <li>Participated in daily report auditing and verification.</li>
                             <li>Collaborated in workshops to identify and solve process bottlenecks.</li>
@@ -171,108 +228,132 @@
             </section>
 
             <section class="py-32 md:py-48" id="education">
-                <span class="block text-xs font-bold uppercase tracking-[0.3em] text-neutral-400 mb-8 pl-1 md:pl-0">03.
+                <span
+                    class="block text-xs font-bold uppercase tracking-[0.3em] text-neutral-400 dark:text-neutral-500 mb-8 pl-1 md:pl-0">03.
                     Education</span>
-                <h2 class="text-5xl md:text-7xl font-bold tracking-tighter text-neutral-900 mb-24 pl-8 md:pl-16 reveal">
+                <h2
+                    class="text-5xl md:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-neutral-50 mb-24 pl-8 md:pl-16 reveal">
                     Academic Background</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 pl-8 md:pl-16">
                     <article class="reveal stagger-1 group">
                         <div
                             class="h-2 w-12 bg-neutral-200 mb-8 group-hover:bg-neutral-900 transition-colors duration-500">
                         </div>
-                        <h3 class="text-2xl md:text-3xl font-bold mb-4 leading-tight text-neutral-900">Credit Analysis &
+                        <h3
+                            class="text-2xl md:text-3xl font-bold mb-4 leading-tight text-neutral-900 dark:text-neutral-50">
+                            Credit Analysis &
                             Entrepreneurship</h3>
-                        <div class="text-sm font-bold uppercase tracking-[0.1em] text-neutral-400 mb-2">Stanford
+                        <div
+                            class="text-sm font-bold uppercase tracking-[0.1em] text-neutral-400 dark:text-neutral-500 mb-2">
+                            Stanford
                             University</div>
-                        <div class="font-serif text-lg text-neutral-500 italic">Summer 2024</div>
+                        <div class="font-serif text-lg text-neutral-500 dark:text-neutral-400 italic">Summer 2024</div>
                     </article>
                     <article class="reveal stagger-2 group">
                         <div
                             class="h-2 w-12 bg-neutral-200 mb-8 group-hover:bg-neutral-900 transition-colors duration-500">
                         </div>
-                        <h3 class="text-2xl md:text-3xl font-bold mb-4 leading-tight text-neutral-900">Industrial
+                        <h3
+                            class="text-2xl md:text-3xl font-bold mb-4 leading-tight text-neutral-900 dark:text-neutral-50">
+                            Industrial
                             Engineering</h3>
-                        <div class="text-sm font-bold uppercase tracking-[0.1em] text-neutral-400 mb-2">Prince Sattam
+                        <div
+                            class="text-sm font-bold uppercase tracking-[0.1em] text-neutral-400 dark:text-neutral-500 mb-2">
+                            Prince Sattam
                             bin Abdulaziz University</div>
-                        <div class="font-serif text-lg text-neutral-500 italic">Bachelor's Degree, 2017—2022</div>
+                        <div class="font-serif text-lg text-neutral-500 dark:text-neutral-400 italic">Bachelor's Degree,
+                            2017—2022</div>
                     </article>
                 </div>
             </section>
 
             <section class="py-32 md:py-48" id="skills">
-                <span class="block text-xs font-bold uppercase tracking-[0.3em] text-neutral-400 mb-8 pl-1 md:pl-0">04.
+                <span
+                    class="block text-xs font-bold uppercase tracking-[0.3em] text-neutral-400 dark:text-neutral-500 mb-8 pl-1 md:pl-0">04.
                     Expertise</span>
-                <h2 class="text-5xl md:text-7xl font-bold tracking-tighter text-neutral-900 mb-24 pl-8 md:pl-16 reveal">
+                <h2
+                    class="text-5xl md:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-neutral-50 mb-24 pl-8 md:pl-16 reveal">
                     Capabilities</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-16 px-8 md:pl-16">
                     <div class="reveal stagger-1">
                         <h4
-                            class="text-xs uppercase tracking-[0.2em] text-neutral-400 mb-8 font-bold border-b border-neutral-200 pb-4">
+                            class="text-xs uppercase tracking-[0.2em] text-neutral-400 dark:text-neutral-500 mb-8 font-bold border-b border-neutral-200 dark:border-neutral-800 pb-4 group-hover:border-neutral-900 dark:group-hover:border-neutral-600 transition-colors duration-500">
                             Core Skills</h4>
-                        <ul class="space-y-4 text-xl md:text-2xl text-neutral-800 font-light">
-                            <li>Financial Analysis</li>
-                            <li>Corporate Finance</li>
-                            <li>Investments</li>
-                            <li>Negotiation</li>
-                            <li>BPTrends Specialist</li>
+                        <ul
+                            class="space-y-4 text-xl md:text-2xl text-neutral-800 dark:text-neutral-100 font-light leading-relaxed">
+                            <li class="hover:translate-x-2 transition-transform duration-300">Financial Analysis</li>
+                            <li class="hover:translate-x-2 transition-transform duration-300">Corporate Finance</li>
+                            <li class="hover:translate-x-2 transition-transform duration-300">Investments</li>
+                            <li class="hover:translate-x-2 transition-transform duration-300">Negotiation</li>
+                            <li class="hover:translate-x-2 transition-transform duration-300">BPTrends Specialist</li>
                         </ul>
                     </div>
                     <div class="reveal stagger-2">
                         <h4
-                            class="text-xs uppercase tracking-[0.2em] text-neutral-400 mb-8 font-bold border-b border-neutral-200 pb-4">
+                            class="text-xs uppercase tracking-[0.2em] text-neutral-400 mb-8 font-bold border-b border-neutral-200 pb-4 group-hover:border-neutral-900 transition-colors duration-500">
                             Languages</h4>
-                        <ul class="space-y-4 text-xl md:text-2xl text-neutral-800 font-light">
-                            <li class="flex justify-between">Arabic <span
-                                    class="font-serif italic text-neutral-400 text-lg">Native</span></li>
-                            <li class="flex justify-between">English <span
-                                    class="font-serif italic text-neutral-400 text-lg">Professional</span></li>
+                        <ul class="space-y-6 text-xl md:text-2xl text-neutral-800 dark:text-neutral-100 font-light">
+                            <li class="flex justify-between items-baseline gap-4">Arabic <span
+                                    class="font-serif italic text-neutral-400 dark:text-neutral-500 text-lg">Native</span>
+                            </li>
+                            <li class="flex justify-between items-baseline gap-4">English <span
+                                    class="font-serif italic text-neutral-400 dark:text-neutral-500 text-lg">Professional</span>
+                            </li>
                         </ul>
                     </div>
                     <div class="reveal stagger-3">
                         <h4
-                            class="text-xs uppercase tracking-[0.2em] text-neutral-400 mb-8 font-bold border-b border-neutral-200 pb-4">
+                            class="text-xs uppercase tracking-[0.2em] text-neutral-400 mb-8 font-bold border-b border-neutral-200 pb-4 group-hover:border-neutral-900 transition-colors duration-500">
                             Certifications</h4>
-                        <ul class="space-y-4 text-lg md:text-xl text-neutral-700 font-light">
-                            <li>Project Management Foundation</li>
-                            <li>English Language (NZ)</li>
-                            <li>Securities & Investment Intro</li>
+                        <ul
+                            class="space-y-4 text-lg md:text-xl text-neutral-700 dark:text-neutral-200 font-light leading-relaxed">
+                            <li class="hover:translate-x-2 transition-transform duration-300">Project Management
+                                Foundation</li>
+                            <li class="hover:translate-x-2 transition-transform duration-300">English Language (NZ)</li>
+                            <li class="hover:translate-x-2 transition-transform duration-300">Securities & Investment
+                                Intro</li>
                         </ul>
                     </div>
                 </div>
             </section>
 
             <section class="py-40 md:py-60" id="contact">
-                <span class="block text-xs font-bold uppercase tracking-[0.3em] text-neutral-400 mb-8 pl-1 md:pl-0">05.
+                <span
+                    class="block text-xs font-bold uppercase tracking-[0.3em] text-neutral-400 dark:text-neutral-500 mb-8 pl-1 md:pl-0">05.
                     Connect</span>
                 <h2
-                    class="text-6xl md:text-8xl font-black tracking-tighter text-neutral-900 mb-32 pl-8 md:pl-16 reveal">
+                    class="text-6xl md:text-8xl font-black tracking-tighter text-neutral-900 dark:text-neutral-50 mb-32 pl-8 md:pl-16 reveal">
                     Get in Touch</h2>
                 <div class="flex flex-col md:flex-row gap-24 pl-8 md:pl-16 reveal stagger-1">
                     <div class="group">
                         <span
-                            class="block text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-4 group-hover:text-neutral-900 transition-colors">Mobile</span>
+                            class="block text-[10px] uppercase tracking-[0.3em] text-neutral-400 dark:text-neutral-500 mb-4 group-hover:text-neutral-900 dark:group-hover:text-neutral-300 transition-colors">Mobile</span>
                         <a href="tel:+966560882677"
-                            class="font-serif text-4xl md:text-5xl text-neutral-800 hover:text-neutral-900 hover:italic transition-all duration-300">+966
+                            class="font-serif text-4xl md:text-5xl text-neutral-800 dark:text-neutral-100 hover:text-neutral-900 dark:hover:text-neutral-50 hover:italic transition-all duration-300">+966
                             56 088 2677</a>
                     </div>
                     <div class="group">
                         <span
-                            class="block text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-4 group-hover:text-neutral-900 transition-colors">Social</span>
+                            class="block text-[10px] uppercase tracking-[0.3em] text-neutral-400 dark:text-neutral-500 mb-4 group-hover:text-neutral-900 dark:group-hover:text-neutral-300 transition-colors">Social</span>
                         <a href="https://www.linkedin.com/in/fisala-114685202" target="_blank"
-                            class="font-serif text-4xl md:text-5xl text-neutral-800 hover:text-neutral-900 hover:italic transition-all duration-300">LinkedIn
+                            class="font-serif text-4xl md:text-5xl text-neutral-800 dark:text-neutral-100 hover:text-neutral-900 dark:hover:text-neutral-50 hover:italic transition-all duration-300">LinkedIn
                             Profile ↗</a>
                     </div>
                 </div>
                 <div class="mt-32 pl-8 md:pl-16 reveal stagger-2">
-                    <a class="text-xs uppercase tracking-[0.3em] font-bold border border-neutral-200 py-4 px-8 hover:bg-neutral-900 hover:text-white hover:border-neutral-900 transition-all duration-500 rounded-full"
+                    <a class="text-xs uppercase tracking-[0.3em] font-bold border border-neutral-200 dark:border-neutral-700 py-4 px-8 hover:bg-neutral-900 hover:text-white hover:border-neutral-900 dark:hover:bg-white dark:hover:text-black dark:hover:border-white transition-all duration-500 rounded-full"
                         href="./assets/resume.pdf">Download Resume</a>
                 </div>
             </section>
 
             <footer
-                class="py-12 border-t border-neutral-100 flex flex-col md:flex-row justify-between items-center gap-8 reveal text-neutral-400">
-                <span class="text-[10px] uppercase tracking-[0.3em]">© 2024 Fisal Alhakbani</span>
-                <span class="text-[10px] uppercase tracking-[0.3em]">Riyadh, Saudi Arabia</span>
+                class="py-12 border-t border-neutral-100 dark:border-neutral-900 flex flex-col md:flex-row justify-between items-center gap-8 reveal text-neutral-400 dark:text-neutral-500">
+                <span
+                    class="text-[10px] uppercase tracking-[0.3em] hover:text-neutral-900 dark:hover:text-neutral-300 transition-colors duration-300">©
+                    2024 Fisal Alhakbani</span>
+                <span
+                    class="text-[10px] uppercase tracking-[0.3em] hover:text-neutral-900 dark:hover:text-neutral-300 transition-colors duration-300">Riyadh,
+                    Saudi Arabia</span>
             </footer>
         </div>
     </main>
