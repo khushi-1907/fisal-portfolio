@@ -16,17 +16,19 @@ body {
     @apply bg-white text-black dark:bg-[#0a0a0a] dark:text-neutral-100 antialiased overflow-x-hidden;
     font-variant-ligatures: common-ligatures;
     transition: background-color 0.3s ease, color 0.3s ease;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
 }
 
 .bullet-list li {
-    @apply relative pl-8 text-lg text-black/80 dark:text-neutral-300 leading-relaxed;
+    @apply relative pl-10 text-lg text-black/80 dark:text-neutral-300 leading-relaxed mb-6;
     transition: color 0.3s ease;
 }
 
 .bullet-list li::before {
-    content: "";
-    @apply absolute left-0 top-3 w-1.5 h-1.5 rounded-full bg-black/20 dark:bg-neutral-600;
-    transition: background-color 0.3s ease;
+    content: "•";
+    @apply absolute left-0 top-2 text-black dark:text-neutral-400 text-2xl leading-none font-normal;
+    transition: color 0.3s ease;
 }
 
 .nav-link {
@@ -86,13 +88,32 @@ header.scrolled {
 /* Reveal Animations */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .reveal-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Enhanced text rendering */
+h1, h2, h3, h4 {
+    font-variant-numeric: tabular-nums;
+    text-rendering: optimizeLegibility;
+}
+
+p {
+    text-rendering: optimizeLegibility;
+}
+
+/* Improved list spacing */
+.space-y-4 > * + * {
+    margin-top: 1.25rem;
+}
+
+.space-y-6 > * + * {
+    margin-top: 1.75rem;
 }
 
 /* Enhanced Dark Mode Styles */
@@ -101,6 +122,50 @@ header.scrolled {
 .dark h3 {
     @apply text-neutral-50;
     text-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
+}
+
+/* Improved contrast and readability */
+.dark {
+    color-scheme: dark;
+}
+
+.light {
+    color-scheme: light;
+}
+
+/* Smooth transitions for all interactive elements */
+a, button, .group {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Better focus states */
+a:focus, button:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+/* Improved scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Glow effect for interactive elements */
+.dark button:hover,
+.dark a:hover {
+    transition: all 0.3s ease;
 }
 
 .dark .experience-item:hover {
