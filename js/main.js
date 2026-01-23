@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     toggleBtn.addEventListener('click', () => {
-        const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         setTheme(newTheme);
     });
@@ -106,11 +106,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Use saved preference
         if (savedTheme === 'dark') {
             document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
     } else if (prefersDark) {
         // Use system preference if no saved theme
         document.documentElement.classList.add('dark');
         localStorage.setItem('theme', 'dark');
+    } else {
+        // Default to light mode
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
     }
 
     // Listen for system theme changes
@@ -120,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
             setTheme(e.matches ? 'dark' : 'light');
         }
     });
-
 
     // Initial check
     setTimeout(updateActiveLink, 100);

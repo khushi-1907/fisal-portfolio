@@ -13,46 +13,69 @@ html.theme-transitioning *::after {
 }
 
 body {
-    @apply bg-white text-black dark:bg-[#0a0a0a] dark:text-neutral-100 antialiased overflow-x-hidden;
+    @apply bg-[#faf9f6] text-neutral-900 dark:bg-[#0a0a0a] dark:text-neutral-100 antialiased overflow-x-hidden;
     font-variant-ligatures: common-ligatures;
     transition: background-color 0.3s ease, color 0.3s ease;
     line-height: 1.6;
     letter-spacing: -0.01em;
 }
 
+/* Golden color definitions */
+:root {
+    --gold-light: #D4AF37;
+    --gold-dark: #B8860B;
+    --gold-accent: #FFD700;
+    --gold-subtle: rgba(212, 175, 55, 0.1);
+}
+
+.dark {
+    --gold-light: #FFD700;
+    --gold-dark: #D4AF37;
+    --gold-accent: #FFF8DC;
+    --gold-subtle: rgba(255, 215, 0, 0.1);
+}
+
 .bullet-list li {
-    @apply relative pl-10 text-lg text-black/80 dark:text-neutral-300 leading-relaxed mb-6;
+    @apply relative pl-10 text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6;
     transition: color 0.3s ease;
 }
 
 .bullet-list li::before {
     content: "•";
-    @apply absolute left-0 top-2 text-black dark:text-neutral-400 text-2xl leading-none font-normal;
+    @apply absolute left-0 top-2 text-gold-500 dark:text-gold-300 text-2xl leading-none font-normal;
     transition: color 0.3s ease;
 }
 
 .nav-link {
-    @apply text-[11px] uppercase tracking-[0.2em] text-black/40 dark:text-neutral-500 hover:text-black dark:hover:text-white transition-colors duration-300;
+    @apply text-[11px] uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-400 hover:text-gold-600 dark:hover:text-gold-300 transition-colors duration-300;
+}
+
+.nav-link.active {
+    color: var(--gold-light) !important;
+    font-weight: 600;
 }
 
 .nav-link:hover {
-    @apply dark:drop-shadow-[0_0_8px_rgba(255, 255, 255, 0.3)];
+    color: var(--gold-light);
 }
 
 /* Header Scroll */
 header.scrolled {
-    @apply shadow-sm bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-md;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    @apply shadow-sm bg-[#faf9f6]/95 dark:bg-[#0a0a0a]/95 backdrop-blur-md;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
 }
 
 /* Enhanced Dark Mode Toggle Button */
 #theme-toggle {
     position: relative;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-color: rgba(212, 175, 55, 0.3) !important;
 }
 
 #theme-toggle:hover {
-    @apply scale-110 dark:shadow-[0_0_20px_rgba(255, 255, 255, 0.2)];
+    @apply scale-110;
+    border-color: var(--gold-light) !important;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
     transform: scale(1.1) rotate(15deg);
 }
 
@@ -116,12 +139,39 @@ p {
     margin-top: 1.75rem;
 }
 
+/* Gold accent headings */
+h1 span.text-neutral-400,
+h1 span.text-neutral-500,
+h2, 
+h3,
+h4 {
+    position: relative;
+}
+
+h1 span.text-neutral-400,
+h1 span.text-neutral-500 {
+    color: var(--gold-dark) !important;
+}
+
+.dark h1 span.text-neutral-500 {
+    color: var(--gold-light) !important;
+}
+
+/* Gold accent for section numbers */
+section span[class*="tracking-"] {
+    color: var(--gold-dark) !important;
+}
+
+.dark section span[class*="tracking-"] {
+    color: var(--gold-light) !important;
+}
+
 /* Enhanced Dark Mode Styles */
 .dark h1,
 .dark h2,
 .dark h3 {
     @apply text-neutral-50;
-    text-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
+    text-shadow: 0 0 40px rgba(255, 215, 0, 0.05);
 }
 
 /* Improved contrast and readability */
@@ -140,7 +190,7 @@ a, button, .group {
 
 /* Better focus states */
 a:focus, button:focus {
-    outline: 2px solid currentColor;
+    outline: 2px solid var(--gold-light);
     outline-offset: 2px;
 }
 
@@ -154,74 +204,154 @@ a:focus, button:focus {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(212, 175, 55, 0.3);
     border-radius: 4px;
 }
 
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 175, 55, 0.5);
+}
+
 .dark ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 215, 0, 0.3);
 }
 
-/* Glow effect for interactive elements */
-.dark button:hover,
-.dark a:hover {
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 215, 0, 0.5);
+}
+
+/* Gold hover effects */
+a:hover {
+    color: var(--gold-light) !important;
+}
+
+/* Experience timeline dots */
+.experience-item .absolute.w-3.h-3 {
+    background: var(--gold-light) !important;
+    border-color: var(--gold-light) !important;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Education bars */
+.group .h-2.w-12 {
+    background: var(--gold-light) !important;
+}
+
+/* Contact links */
+a.font-serif.text-4xl:hover {
+    color: var(--gold-light) !important;
+}
+
+/* Border colors */
+.border-neutral-200,
+.border-neutral-300 {
+    border-color: rgba(212, 175, 55, 0.2) !important;
+}
+
+.dark .border-neutral-800,
+.dark .border-neutral-700 {
+    border-color: rgba(255, 215, 0, 0.2) !important;
+}
+
+/* Button hover effect */
+.py-4.px-8.hover\\:bg-neutral-900 {
     transition: all 0.3s ease;
 }
 
-.dark .experience-item:hover {
-    @apply shadow-[0_0_30px_rgba(255, 255, 255, 0.03)];
+.py-4.px-8.hover\\:bg-neutral-900:hover {
+    background-color: var(--gold-dark) !important;
+    border-color: var(--gold-dark) !important;
+    color: white !important;
 }
 
-.dark a:hover {
-    @apply drop-shadow-[0_0_10px_rgba(255, 255, 255, 0.2)];
+.dark .py-4.px-8.dark\\:hover\\:bg-white:hover {
+    background-color: var(--gold-light) !important;
+    border-color: var(--gold-light) !important;
+    color: black !important;
 }
 
-/* Improved border colors in dark mode */
-.dark .border-neutral-200 {
-    @apply border-neutral-800;
+/* Photo overlay effects */
+aside {
+    position: relative;
+    overflow: hidden;
 }
 
-.dark .border-neutral-100 {
-    @apply border-neutral-900;
+/* White overlay for light mode */
+aside .photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 30%,
+        transparent 60%
+    );
+    mix-blend-mode: overlay;
+    z-index: 2;
+    pointer-events: none;
+    transition: all 0.8s ease;
 }
 
-/* Enhanced hover effects for dark mode */
-.dark .group:hover .h-2 {
-    @apply shadow-[0_0_15px_rgba(255, 255, 255, 0.3)];
+/* Dark overlay for dark mode */
+.dark aside .photo-overlay {
+    background: linear-gradient(
+        to bottom right,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.2) 30%,
+        transparent 60%
+    );
+    mix-blend-mode: multiply;
 }
 
-/* Sidebar overlay enhancement */
-.dark aside .absolute {
-    @apply bg-black/60;
+/* Image styling */
+aside img {
+    filter: brightness(1.02) contrast(1.05);
+    transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Better contrast for text elements */
-.dark .text-neutral-900 {
-    @apply text-neutral-50;
+aside:hover img {
+    filter: brightness(1.05) contrast(1.08);
+    transform: scale(1.02);
 }
 
-.dark .text-neutral-800 {
-    @apply text-neutral-100;
+/* Dark mode image adjustments */
+.dark aside img {
+    filter: brightness(0.95) contrast(1.1) saturate(0.95);
 }
 
-.dark .text-neutral-700 {
-    @apply text-neutral-200;
+.dark aside:hover img {
+    filter: brightness(0.98) contrast(1.15) saturate(1);
 }
 
-.dark .text-neutral-600 {
-    @apply text-neutral-300;
+/* Optional: Add a subtle vignette effect */
+aside::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at 50% 50%,
+        transparent 30%,
+        rgba(255, 255, 255, 0.1) 80%,
+        rgba(255, 255, 255, 0.2) 100%
+    );
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0.5;
+    transition: opacity 0.8s ease;
 }
 
-.dark .text-neutral-500 {
-    @apply text-neutral-400;
+.dark aside::after {
+    background: radial-gradient(
+        circle at 50% 50%,
+        transparent 30%,
+        rgba(0, 0, 0, 0.2) 80%,
+        rgba(0, 0, 0, 0.4) 100%
+    );
+    mix-blend-mode: multiply;
+    opacity: 0.6;
 }
 
-.dark .text-neutral-400 {
-    @apply text-neutral-500;
-}
-
-/* Glow effect for interactive elements */
-.dark button:hover,
-.dark a:hover {
-    transition: all 0.3s ease;
+aside:hover::after {
+    opacity: 0.7;
 }
