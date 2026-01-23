@@ -65,7 +65,47 @@ header.scrolled {
     border-bottom: 1px solid rgba(212, 175, 55, 0.1);
 }
 
-/* Enhanced Dark Mode Toggle Button */
+/* Mobile Theme Toggle Button */
+#theme-toggle-mobile {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-color: rgba(212, 175, 55, 0.3) !important;
+}
+
+#theme-toggle-mobile:hover {
+    border-color: var(--gold-light) !important;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    transform: scale(1.1) rotate(15deg);
+}
+
+#theme-toggle-mobile svg {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#theme-toggle-mobile .sun-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+#theme-toggle-mobile .moon-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+}
+
+.dark #theme-toggle-mobile .sun-icon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+}
+
+.dark #theme-toggle-mobile .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
 #theme-toggle {
     position: relative;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

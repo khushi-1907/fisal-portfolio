@@ -65,87 +65,117 @@
         <div class="max-w-4xl mx-auto px-8 lg:px-24">
 
             <!-- Header -->
-            <header class="flex flex-col lg:flex-row justify-between items-center py-8 lg:py-12 sticky top-0
+            <header class="sticky top-0 z-50 transition-all duration-500
                        bg-[#faf9f6]/80 dark:bg-neutral-950/80
-                       backdrop-blur-md z-50 transition-all duration-500
-                       border-b border-gold-200/30 dark:border-gold-800/30 px-4 lg:px-0">
+                       backdrop-blur-md border-b border-gold-200/30 dark:border-gold-800/30">
 
-                <div class="flex items-center justify-between w-full lg:w-auto">
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex justify-between items-center py-4 lg:py-6 px-4 lg:px-0">
                     <span class="text-[11px] uppercase tracking-[0.4em] font-bold
                                text-gold-600 dark:text-gold-400">
                         FA
                     </span>
 
-                    <!-- Mobile menu button -->
-                    <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-lg border
+                    <nav class="flex gap-12 relative">
+                        <div id="nav-indicator" class="absolute -bottom-1 h-0.5 bg-gold-500 dark:bg-gold-400 transition-all duration-300 opacity-0"></div>
+                        <a class="nav-link" href="#summary">Summary</a>
+                        <a class="nav-link" href="#experience">Experience</a>
+                        <a class="nav-link" href="#education">Education</a>
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </nav>
+
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-full border relative
                                border-gold-300 dark:border-gold-700
                                text-gold-600 dark:text-gold-400
+                               hover:text-gold-800 dark:hover:text-gold-300
                                hover:bg-gold-50 dark:hover:bg-gold-900/20
-                               transition-all duration-300" aria-label="Toggle menu">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                  d="M4 6h16M4 12h16M4 18h16"></path>
+                               transition-all duration-300" aria-label="Toggle dark mode">
+
+                        <!-- Sun Icon (visible in light mode) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sun-icon" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364-.707.707
+                                   M6.343 17.657l-.707.707m0-12.728.707.707
+                                   m11.314 11.314.707.707
+                                   M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                        </svg>
+
+                        <!-- Moon Icon (visible in dark mode) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 moon-icon" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
                 </div>
 
-                <nav id="mobile-menu" class="hidden lg:flex lg:flex-row flex-col lg:flex-row gap-4 lg:gap-12 relative mt-4 lg:mt-0 w-full lg:w-auto">
-                    <div id="nav-indicator" class="absolute -bottom-1 h-0.5 bg-gold-500 dark:bg-gold-400 transition-all duration-300 opacity-0"></div>
-                    <a class="nav-link block lg:inline text-center py-2 lg:py-0" href="#summary">Summary</a>
-                    <a class="nav-link block lg:inline text-center py-2 lg:py-0" href="#experience">Experience</a>
-                    <a class="nav-link block lg:inline text-center py-2 lg:py-0" href="#education">Education</a>
-                    <a class="nav-link block lg:inline text-center py-2 lg:py-0" href="#contact">Contact</a>
-                </nav>
+                <!-- Mobile Navigation -->
+                <div class="lg:hidden">
+                    <!-- Mobile Header Bar -->
+                    <div class="flex justify-between items-center py-3 px-4">
+                        <span class="text-[11px] uppercase tracking-[0.4em] font-bold
+                                   text-gold-600 dark:text-gold-400">
+                            FA
+                        </span>
 
-                <!-- Dark Mode Toggle -->
-                <button id="theme-toggle" class="hidden lg:block ml-6 p-2 rounded-full border relative
-                           border-gold-300 dark:border-gold-700
-                           text-gold-600 dark:text-gold-400
-                           hover:text-gold-800 dark:hover:text-gold-300
-                           hover:bg-gold-50 dark:hover:bg-gold-900/20
-                           transition-all duration-300" aria-label="Toggle dark mode">
+                        <div class="flex items-center gap-3">
+                            <!-- Mobile Theme Toggle -->
+                            <button id="theme-toggle-mobile" class="p-2 rounded-full border relative
+                                       border-gold-300 dark:border-gold-700
+                                       text-gold-600 dark:text-gold-400
+                                       hover:text-gold-800 dark:hover:text-gold-300
+                                       hover:bg-gold-50 dark:hover:bg-gold-900/20
+                                       transition-all duration-300" aria-label="Toggle dark mode">
 
-                    <!-- Sun Icon (visible in light mode) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sun-icon" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364-.707.707
-                               M6.343 17.657l-.707.707m0-12.728.707.707
-                               m11.314 11.314.707.707
-                               M12 8a4 4 0 100 8 4 4 0 000-8z" />
-                    </svg>
+                                <!-- Sun Icon (visible in light mode) -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sun-icon" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364-.707.707
+                                           M6.343 17.657l-.707.707m0-12.728.707.707
+                                           m11.314 11.314.707.707
+                                           M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                                </svg>
 
-                    <!-- Moon Icon (visible in dark mode) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 moon-icon" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                    </svg>
-                </button>
+                                <!-- Moon Icon (visible in dark mode) -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 moon-icon" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                                </svg>
+                            </button>
 
-                <!-- Mobile Dark Mode Toggle -->
-                <button id="theme-toggle-mobile" class="lg:hidden p-2 rounded-full border relative
-                           border-gold-300 dark:border-gold-700
-                           text-gold-600 dark:text-gold-400
-                           hover:text-gold-800 dark:hover:text-gold-300
-                           hover:bg-gold-50 dark:hover:bg-gold-900/20
-                           transition-all duration-300" aria-label="Toggle dark mode">
+                            <!-- Mobile Menu Toggle -->
+                            <button id="mobile-menu-toggle" class="p-2 rounded-lg
+                                       text-gold-600 dark:text-gold-400
+                                       hover:bg-gold-50 dark:hover:bg-gold-900/20
+                                       transition-all duration-300" aria-label="Toggle menu">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                          d="M4 6h16M4 12h16M4 18h16"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
 
-                    <!-- Sun Icon (visible in light mode) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sun-icon" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364-.707.707
-                               M6.343 17.657l-.707.707m0-12.728.707.707
-                               m11.314 11.314.707.707
-                               M12 8a4 4 0 100 8 4 4 0 000-8z" />
-                    </svg>
-
-                    <!-- Moon Icon (visible in dark mode) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 moon-icon" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                    </svg>
-                </button>
+                    <!-- Mobile Menu Panel -->
+                    <nav id="mobile-menu" class="hidden border-t border-gold-200/30 dark:border-gold-800/30 bg-[#faf9f6]/95 dark:bg-neutral-950/95 backdrop-blur-md">
+                        <div class="py-2">
+                            <a class="block px-4 py-3 text-base font-medium text-neutral-700 dark:text-neutral-300 hover:text-gold-600 dark:hover:text-gold-400 hover:bg-gold-50/50 dark:hover:bg-gold-900/20 transition-all duration-200" href="#summary">
+                                Summary
+                            </a>
+                            <a class="block px-4 py-3 text-base font-medium text-neutral-700 dark:text-neutral-300 hover:text-gold-600 dark:hover:text-gold-400 hover:bg-gold-50/50 dark:hover:bg-gold-900/20 transition-all duration-200" href="#experience">
+                                Experience
+                            </a>
+                            <a class="block px-4 py-3 text-base font-medium text-neutral-700 dark:text-neutral-300 hover:text-gold-600 dark:hover:text-gold-400 hover:bg-gold-50/50 dark:hover:bg-gold-900/20 transition-all duration-200" href="#education">
+                                Education
+                            </a>
+                            <a class="block px-4 py-3 text-base font-medium text-neutral-700 dark:text-neutral-300 hover:text-gold-600 dark:hover:text-gold-400 hover:bg-gold-50/50 dark:hover:bg-gold-900/20 transition-all duration-200" href="#contact">
+                                Contact
+                            </a>
+                        </div>
+                    </nav>
+                </div>
             </header>
 
             <section class="min-h-[60vh] lg:min-h-[85vh] flex flex-col justify-center reveal px-4 lg:px-0">
