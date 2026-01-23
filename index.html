@@ -44,6 +44,7 @@
 
 <!-- Sidebar -->
 <aside class="lg:w-[40%] lg:h-screen lg:fixed lg:left-0 lg:top-0 w-full
+           h-64 md:h-80
            overflow-hidden relative group bg-white dark:bg-neutral-900">
 
     <!-- Photo overlay -->
@@ -64,26 +65,65 @@
         <div class="max-w-4xl mx-auto px-8 lg:px-24">
 
             <!-- Header -->
-            <header class="flex justify-between items-center py-12 sticky top-0
+            <header class="flex flex-col lg:flex-row justify-between items-center py-8 lg:py-12 sticky top-0
                        bg-[#faf9f6]/80 dark:bg-neutral-950/80
                        backdrop-blur-md z-50 transition-all duration-500
-                       border-b border-gold-200/30 dark:border-gold-800/30">
+                       border-b border-gold-200/30 dark:border-gold-800/30 px-4 lg:px-0">
 
-                <span class="text-[11px] uppercase tracking-[0.4em] font-bold
-                           text-gold-600 dark:text-gold-400">
-                    FA
-                </span>
+                <div class="flex items-center justify-between w-full lg:w-auto">
+                    <span class="text-[11px] uppercase tracking-[0.4em] font-bold
+                               text-gold-600 dark:text-gold-400">
+                        FA
+                    </span>
 
-                <nav class="flex gap-8 md:gap-12 relative">
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-lg border
+                               border-gold-300 dark:border-gold-700
+                               text-gold-600 dark:text-gold-400
+                               hover:bg-gold-50 dark:hover:bg-gold-900/20
+                               transition-all duration-300" aria-label="Toggle menu">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <nav id="mobile-menu" class="hidden lg:flex lg:flex-row flex-col lg:flex-row gap-4 lg:gap-12 relative mt-4 lg:mt-0 w-full lg:w-auto">
                     <div id="nav-indicator" class="absolute -bottom-1 h-0.5 bg-gold-500 dark:bg-gold-400 transition-all duration-300 opacity-0"></div>
-                    <a class="nav-link" href="#summary">Summary</a>
-                    <a class="nav-link" href="#experience">Experience</a>
-                    <a class="nav-link" href="#education">Education</a>
-                    <a class="nav-link" href="#contact">Contact</a>
+                    <a class="nav-link block lg:inline text-center py-2 lg:py-0" href="#summary">Summary</a>
+                    <a class="nav-link block lg:inline text-center py-2 lg:py-0" href="#experience">Experience</a>
+                    <a class="nav-link block lg:inline text-center py-2 lg:py-0" href="#education">Education</a>
+                    <a class="nav-link block lg:inline text-center py-2 lg:py-0" href="#contact">Contact</a>
                 </nav>
 
                 <!-- Dark Mode Toggle -->
-                <button id="theme-toggle" class="ml-6 p-2 rounded-full border relative
+                <button id="theme-toggle" class="hidden lg:block ml-6 p-2 rounded-full border relative
+                           border-gold-300 dark:border-gold-700
+                           text-gold-600 dark:text-gold-400
+                           hover:text-gold-800 dark:hover:text-gold-300
+                           hover:bg-gold-50 dark:hover:bg-gold-900/20
+                           transition-all duration-300" aria-label="Toggle dark mode">
+
+                    <!-- Sun Icon (visible in light mode) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sun-icon" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364-.707.707
+                               M6.343 17.657l-.707.707m0-12.728.707.707
+                               m11.314 11.314.707.707
+                               M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                    </svg>
+
+                    <!-- Moon Icon (visible in dark mode) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 moon-icon" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                </button>
+
+                <!-- Mobile Dark Mode Toggle -->
+                <button id="theme-toggle-mobile" class="lg:hidden p-2 rounded-full border relative
                            border-gold-300 dark:border-gold-700
                            text-gold-600 dark:text-gold-400
                            hover:text-gold-800 dark:hover:text-gold-300
@@ -108,28 +148,28 @@
                 </button>
             </header>
 
-            <section class="min-h-[85vh] flex flex-col justify-center reveal">
+            <section class="min-h-[60vh] lg:min-h-[85vh] flex flex-col justify-center reveal px-4 lg:px-0">
                 <h1
-                    class="font-sans text-6xl md:text-[10rem] font-black tracking-tighter leading-[0.8] mb-12 text-neutral-900 dark:text-neutral-50 mt-20">
+                    class="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-[10rem] font-black tracking-tighter leading-[0.8] mb-8 lg:mb-12 text-neutral-900 dark:text-neutral-50 mt-12 lg:mt-20">
                     Fisal<br /><span class="text-gold-600 dark:text-gold-400">Alhakbani</span>
                 </h1>
                 <p
-                    class="font-serif text-2xl md:text-3xl font-light text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed stagger-1 italic pl-1 border-l-2 border-gold-300 dark:border-gold-700 pl-4">
+                    class="font-serif text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed stagger-1 italic pl-1 border-l-2 border-gold-300 dark:border-gold-700 pl-4">
                     Local Content Monitoring Specialist & Industrial Engineer.
                 </p>
             </section>
 
-            <section class="py-32 md:py-48 reveal" id="summary">
+            <section class="py-16 md:py-32 lg:py-48 reveal px-4 lg:px-0" id="summary">
                 <span
-                    class="block text-xs font-bold uppercase tracking-[0.3em] text-gold-600 dark:text-gold-400 mb-8 pl-1 md:pl-0">01.
+                    class="block text-xs font-bold uppercase tracking-[0.3em] text-gold-600 dark:text-gold-400 mb-6 md:mb-8 pl-1 md:pl-0">01.
                     Summary</span>
                 <div
-                    class="border-l border-gold-300 dark:border-gold-700 pl-8 md:pl-16 transition-colors duration-500 hover:border-gold-500 dark:hover:border-gold-400">
+                    class="border-l border-gold-300 dark:border-gold-700 pl-6 md:pl-8 lg:pl-16 transition-colors duration-500 hover:border-gold-500 dark:hover:border-gold-400">
                     <h2
-                        class="text-5xl md:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-neutral-50 mb-12">
+                        class="text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-neutral-50 mb-8 md:mb-12">
                         About Me</h2>
                     <div
-                        class="font-serif text-2xl md:text-3xl leading-relaxed text-neutral-600 dark:text-neutral-300 font-light stagger-1">
+                        class="font-serif text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed text-neutral-600 dark:text-neutral-300 font-light stagger-1">
                         Fisal, a knowledgeable <span
                             class="text-gold-600 dark:text-gold-400 font-normal">industrial engineer</span>,
                         excels in solving complex problems. My expertise lies in quantitative analysis, which I apply

@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Theme toggle with smooth transition
     const toggleBtn = document.getElementById('theme-toggle');
+    const toggleBtnMobile = document.getElementById('theme-toggle-mobile');
 
     function setTheme(theme) {
         // Add transitioning class for smooth animation
@@ -92,10 +93,28 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', theme);
     }
 
-    toggleBtn.addEventListener('click', () => {
+    function handleThemeToggle() {
         const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         setTheme(newTheme);
+    }
+
+    toggleBtn.addEventListener('click', handleThemeToggle);
+    toggleBtnMobile.addEventListener('click', handleThemeToggle);
+
+    // Mobile menu toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking on a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
     });
 
     // Load saved theme or detect system preference
